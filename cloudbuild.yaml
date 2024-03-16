@@ -1,0 +1,3 @@
+steps:
+- name: 'asia-east1-docker.pkg.dev/${PROJECT_ID}/cloud-builders/ocs-helm'
+  args:
