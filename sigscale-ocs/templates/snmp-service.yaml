@@ -1,0 +1,17 @@
+## SigScale OCS SNMP Service
+##
+kind: Service
+apiVersion: v1
+metadata:
+  name: ocs-snmp
+  labels:
+    {{- include "sigscale-ocs.labels" . | nindent 4 }}
+spec:
+  selector:
+    {{- include "sigscale-ocs.selectorLabels" . | nindent 6 }}
+  type: {{ .Values.snmpService.type }}
+  ports:
+  - protocol: UDP
+    appProtocol: snmp
+    port: {{ .Values.snmpService.port }}
+    targetPort: snmp

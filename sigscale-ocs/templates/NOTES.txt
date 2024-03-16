@@ -1,0 +1,1 @@
+Installed {{ .Chart.Name }} instance as release name: {{ .Release.Name }}

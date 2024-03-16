@@ -1,0 +1,47 @@
+# Default values for sigscale-ocs
+#
+replicaCount: 1
+image:
+  repository: sigscale
+  pullPolicy: IfNotPresent
+  tag: ""
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  name: ""
+podAnnotations: {}
+podLabels: {}
+restService:
+  type: LoadBalancer
+  port: 80
+diameterAcctService:
+  type: ClusterIP
+  port: 3868
+diameterAuthService:
+  type: ClusterIP
+  port: 3869
+radiusAcctService:
+  type: ClusterIP
+  port: 1813
+radiusAuthService:
+  type: ClusterIP
+  port: 1812
+snmpService:
+  type: ClusterIP
+  port: 4161
+resources: {}
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+nodeSelector: {}
+tolerations: []
+affinity: {}
+dataStorage: 10Gi
+logsStorage: 10Gi
+erlangArgs: ""

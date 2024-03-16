@@ -1,0 +1,17 @@
+## SigScale OCS DIAMETER Accounting Service
+##
+kind: Service
+apiVersion: v1
+metadata:
+  name: diameter-acct
+  labels:
+    {{- include "sigscale-ocs.labels" . | nindent 4 }}
+spec:
+  selector:
+    {{- include "sigscale-ocs.selectorLabels" . | nindent 6 }}
+  type: {{ .Values.diameterAcctService.type }}
+  ports:
+  - protocol: TCP
+    appProtocol: diameter
+    port: {{ .Values.diameterAcctService.port }}
+    targetPort: diameter-acct

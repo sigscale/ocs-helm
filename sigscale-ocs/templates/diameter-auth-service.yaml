@@ -1,0 +1,17 @@
+## SigScale OCS DIAMETER Authentication Service
+##
+kind: Service
+apiVersion: v1
+metadata:
+  name: diameter-auth
+  labels:
+    {{- include "sigscale-ocs.labels" . | nindent 4 }}
+spec:
+  selector:
+    {{- include "sigscale-ocs.selectorLabels" . | nindent 6 }}
+  type: {{ .Values.diameterAuthService.type }}
+  ports:
+  - protocol: TCP
+    appProtocol: diameter
+    port: {{ .Values.diameterAuthService.port }}
+    targetPort: diameter-auth

@@ -1,0 +1,17 @@
+## SigScale OCS RADIUS Accounting Service
+##
+kind: Service
+apiVersion: v1
+metadata:
+  name: radius-acct
+  labels:
+    {{- include "sigscale-ocs.labels" . | nindent 4 }}
+spec:
+  selector:
+    {{- include "sigscale-ocs.selectorLabels" . | nindent 6 }}
+  type: {{ .Values.radiusAcctService.type }}
+  ports:
+  - protocol: UDP
+    appProtocol: radius-acct
+    port:  {{ .Values.radiusAcctService.port }}
+    targetPort: radius-acct

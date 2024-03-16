@@ -1,0 +1,17 @@
+## SigScale OCS REST Service
+##
+kind: Service
+apiVersion: v1
+metadata:
+  name: ocs-rest
+  labels:
+    {{- include "sigscale-ocs.labels" . | nindent 4 }}
+spec:
+  selector:
+    {{- include "sigscale-ocs.selectorLabels" . | nindent 6 }}
+  type: {{ .Values.restService.type }}
+  ports:
+  - protocol: TCP
+    appProtocol: http
+    port: {{ .Values.restService.port }}
+    targetPort: rest

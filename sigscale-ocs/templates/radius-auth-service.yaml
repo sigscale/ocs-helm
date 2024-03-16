@@ -1,0 +1,17 @@
+## SigScale OCS RADIUS Authorization Service
+##
+kind: Service
+apiVersion: v1
+metadata:
+  name: radius-auth
+  labels:
+    {{- include "sigscale-ocs.labels" . | nindent 4 }}
+spec:
+  selector:
+    {{- include "sigscale-ocs.selectorLabels" . | nindent 6 }}
+  type: {{ .Values.radiusAuthService.type }}
+  ports:
+  - protocol: UDP
+    appProtocol: radius
+    port:  {{ .Values.radiusAuthService.port }}
+    targetPort: radius-auth
