@@ -3,7 +3,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: ocs-rest
+  name: {{ .Release.Name }}-ocs-rest
   labels:
     {{- include "sigscale-ocs.labels" . | nindent 4 }}
 spec:

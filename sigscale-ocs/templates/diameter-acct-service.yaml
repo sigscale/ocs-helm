@@ -3,7 +3,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: diameter-acct
+  name: {{ .Release.Name }}-diameter-acct
   labels:
     {{- include "sigscale-ocs.labels" . | nindent 4 }}
 spec:

@@ -4,7 +4,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: otp-ocs
+  name: {{ .Release.Name }}-otp-ocs
   labels:
     {{- include "sigscale-ocs.labels" . | nindent 4 }}
 spec:

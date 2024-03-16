@@ -3,7 +3,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: ocs-snmp
+  name: {{ .Release.Name }}-ocs-snmp
   labels:
     {{- include "sigscale-ocs.labels" . | nindent 4 }}
 spec:

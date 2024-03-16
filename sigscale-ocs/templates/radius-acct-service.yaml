@@ -3,7 +3,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: radius-acct
+  name: {{ .Release.Name }}-radius-acct
   labels:
     {{- include "sigscale-ocs.labels" . | nindent 4 }}
 spec:

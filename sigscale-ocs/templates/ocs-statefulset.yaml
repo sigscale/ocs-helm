@@ -42,7 +42,7 @@ spec:
         - name: ERLANG_COOKIE
           valueFrom:
             secretKeyRef:
-              name: otp-dist
+              name: {{ .Release.Name }}-otp-dist
               key: ERLANG_COOKIE
         stdin: true
         tty: true
@@ -82,7 +82,7 @@ spec:
         - name: ERLANG_COOKIE
           valueFrom:
             secretKeyRef:
-              name: otp-dist
+              name: {{ .Release.Name }}-otp-dist
               key: ERLANG_COOKIE
         stdin: true
         tty: true
