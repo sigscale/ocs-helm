@@ -38,7 +38,7 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
         - name: ERLARGS
-          value: {{- with .Values.erlangArgs }}
+          value: {{ .Values.erlangArgs }}
         - name: ERLANG_COOKIE
           valueFrom:
             secretKeyRef:
@@ -78,7 +78,7 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
         - name: ERLARGS
-          value: {{- with .Values.erlangArgs }}
+          value: {{ .Values.erlangArgs }}
         - name: ERLANG_COOKIE
           valueFrom:
             secretKeyRef:
