@@ -11,4 +11,4 @@ maintainers: # (optional)
     email: issues@sigscale.com
     url: https://sigscale.org/contact
 icon: https://sigscale.org/esm-bundled/images/manifest/icon-96x96.png
-appVersion: "3.3.15-1"
+appVersion: "3.3.15-3"
