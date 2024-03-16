@@ -11,6 +11,22 @@
 	Fetching cluster endpoint and auth data.
 	kubeconfig entry generated for cluster-1.
 
-## Install the Helm Chart
-	$ helm install ocs-1 ./sigscale-ocs
+# Get the Pods (after `helm install`)
+	$ kubectl get pods
+	NAME                   READY   STATUS    RESTARTS   AGE
+	ocs-1-sigscale-ocs-0   1/1     Running   0          29s
+
+## Get the log of init container
+	kubectl logs ocs-1-sigscale-ocs-0 -c ocs-init
+
+## Get the log of container
+	kubectl logs ocs-1-sigscale-ocs-0
+
+## Describe the pod
+	$ kubectl describe pod ocs-1-sigscale-ocs-0
+
+## Attach to a GKE pod deployment which runs ocs container
+	$ kubectl attach -ti ocs-1-sigscale-ocs-0 -c ocs -i -t
+	(ocs@ocs-1-sigscale-ocs-0.otp-ocs.default.svc.cluster.local)5>
+### There is no `detach` so you'll need to kill the `kubectl attach` process
 
