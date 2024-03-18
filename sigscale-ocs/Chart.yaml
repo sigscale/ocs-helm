@@ -1,8 +1,14 @@
 apiVersion: v2
 name: sigscale-ocs
-version: 1.0.1
+version: 1.0.2
 description: "SigScale OCS (Online Charging System)"
 type: application
+keywords:
+  - 3gpp
+  - ocs
+  - ccs
+  - 5g
+  - cnf
 home: https://sigscale.com/solutions
 sources:
   - https://github.com/sigscale/ocs
