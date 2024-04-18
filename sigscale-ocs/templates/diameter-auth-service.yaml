@@ -11,7 +11,7 @@ spec:
     {{- include "sigscale-ocs.selectorLabels" . | nindent 6 }}
   type: {{ .Values.diameterAuthService.type }}
   ports:
-  - protocol: {{ .Values.diameterAuthService.transport}}
+  - protocol: {{ .Values.diameterAuthService.protocol }}
     appProtocol: diameter
     port: {{ .Values.diameterAuthService.port }}
     targetPort: diameter-auth

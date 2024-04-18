@@ -107,10 +107,10 @@ spec:
           protocol: TCP
           containerPort: 54861
         - name: diameter-acct
-          protocol: {{ .Values.diameterAcctService.transport}}
+          protocol: {{ .Values.diameterAcctService.protocol }}
           containerPort: 3868
         - name: diameter-auth
-          protocol: {{ .Values.diameterAcctService.transport}}
+          protocol: {{ .Values.diameterAcctService.protocol }}
           containerPort: 3869
         - name: radius-auth
           protocol: UDP

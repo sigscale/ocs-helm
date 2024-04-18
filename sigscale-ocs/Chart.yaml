@@ -1,6 +1,6 @@
 apiVersion: v2
 name: sigscale-ocs
-version: 1.0.3
+version: 1.0.4
 description: "SigScale OCS (Online Charging System)"
 type: application
 keywords:

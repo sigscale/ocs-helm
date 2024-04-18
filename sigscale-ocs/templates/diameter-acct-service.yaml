@@ -11,7 +11,7 @@ spec:
     {{- include "sigscale-ocs.selectorLabels" . | nindent 6 }}
   type: {{ .Values.diameterAcctService.type }}
   ports:
-  - protocol: {{ .Values.diameterAcctService.transport}}
+  - protocol: {{ .Values.diameterAcctService.protocol }}
     appProtocol: diameter
     port: {{ .Values.diameterAcctService.port }}
     targetPort: diameter-acct

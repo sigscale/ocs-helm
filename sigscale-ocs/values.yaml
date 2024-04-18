@@ -20,11 +20,11 @@ restService:
   port: 80
 diameterAcctService:
   type: ClusterIP
-  transport: TCP
+  protocol: TCP
   port: 3868
 diameterAuthService:
   type: ClusterIP
-  transport: TCP
+  protocol: TCP
   port: 3869
 radiusAcctService:
   type: ClusterIP
