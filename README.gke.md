@@ -2,7 +2,7 @@
 
 ## Create a GKE Autopilot Cluster
 	gcloud container clusters create-auto ocs-cluster \
-			--project sigscale-ocs --location=asia-east1b
+			--project sigscale-ocs --location=asia-east1
 
 ## Configure `kubectl` to use the GKE Cluster
 	gcloud container clusters get-credentials ocs-cluster
