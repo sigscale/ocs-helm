@@ -21,3 +21,9 @@ Helm chart for deploying SigScale OCS on Kubernetes
 	$ helm uninstall ocs-1
 	release "ocs-1" uninstalled
 
+# Deploy with localization overides in sys.config
+	helm install \
+			--set ocsConfig.create=true \
+			--set-file ocsConfig.sysConfig=sys.config \
+			ocs-1 sigscale-ocs
+

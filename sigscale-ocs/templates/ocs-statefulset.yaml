@@ -38,7 +38,11 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
         - name: ERLARGS
-          value: {{ .Values.erlangArgs }}
+        {{- if .Values.ocsConfig.create }}
+          value: {{ cat .Values.erlangArgs "-config config/sys" | quote }}
+        {{- else }}
+          value: {{ .Values.erlangArgs | quote }}
+        {{- end }}
         - name: ERLANG_COOKIE
           valueFrom:
             secretKeyRef:
@@ -72,13 +76,22 @@ spec:
         volumeMounts:
         - name: ocs-data
           mountPath: /home/otp/db
+        {{- if .Values.ocsConfig.create }}
+        - name: ocs-config
+          mountPath: /home/otp/config
+          readOnly: true
+        {{- end }}
       containers:
       - name: ocs
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
         - name: ERLARGS
-          value: {{ .Values.erlangArgs }}
+        {{- if .Values.ocsConfig.create }}
+          value: {{ cat .Values.erlangArgs "-config config/sys" | quote }}
+        {{- else }}
+          value: {{ .Values.erlangArgs | quote }}
+        {{- end }}
         - name: ERLANG_COOKIE
           valueFrom:
             secretKeyRef:
@@ -116,6 +129,11 @@ spec:
           mountPath: /home/otp/db
         - name: ocs-log
           mountPath: /home/otp/logs
+        {{- if .Values.ocsConfig.create }}
+        - name: ocs-config
+          mountPath: /home/otp/config
+          readOnly: true
+        {{- end }}
         readinessProbe:
           httpGet:
             httpHeaders:
@@ -131,6 +149,15 @@ spec:
           failureThreshold: 6
         resources:
           {{- toYaml .Values.resources | nindent 12 }}
+      {{- if .Values.ocsConfig.create }}
+      volumes:
+      - name: ocs-config
+        configMap:
+          name: {{ .Release.Name }}-ocs-config
+          items:
+          - key: "sys.config"
+            path: "sys.config"
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

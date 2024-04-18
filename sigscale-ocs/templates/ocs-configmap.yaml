@@ -1,0 +1,10 @@
+{{- if .Values.ocsConfig.create -}}
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ .Release.Name }}-ocs-config
+  labels:
+    {{- include "sigscale-ocs.labels" . | nindent 4 }}
+data:
+  sys.config: {{ .Values.ocsConfig.sysConfig | quote }} 
+{{- end }}

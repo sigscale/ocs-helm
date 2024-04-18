@@ -47,3 +47,6 @@ affinity: {}
 dataStorage: 10Gi
 logsStorage: 10Gi
 erlangArgs: ""
+ocsConfig:
+  create: false
+  sysConfig: "[]."
