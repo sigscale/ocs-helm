@@ -1,15 +1,11 @@
 # Manage Google Kubernetes Engine (GKE)
 
-## Create a (tiny) GKE Cluster
-	$ gcloud container clusters create cluster-1 \
-			--machine-type e2-small \
-			--disk-size 10 \
-			--num-nodes 3
+## Create a GKE Autopilot Cluster
+	gcloud container clusters create-auto ocs-cluster \
+			--project sigscale-ocs --location=asia-east1b
 
 ## Configure `kubectl` to use the GKE Cluster
-	$ gcloud container clusters get-credentials cluster-1
-	Fetching cluster endpoint and auth data.
-	kubeconfig entry generated for cluster-1.
+	gcloud container clusters get-credentials ocs-cluster
 
 # Get the Pods (after `helm install`)
 	$ kubectl get pods
