@@ -1,0 +1,10 @@
+# Google Artifact Registry (GAR)
+
+## Authenticate with GAR
+	gcloud auth configure-docker
+
+## Upload metadata file for ArtifactHub Verified Publisher
+	oras push asia-east1-docker.pkg.dev/sigscale-ocs/charts/sigscale-ocs:artifacthub.io \
+			--config config.json:application/vnd.cncf.artifacthub.config.v1+yaml \
+			artifacthub-repo.yml:application/vnd.cncf.artifacthub.repository-metadata.layer.v1.yaml
+
