@@ -1,6 +1,6 @@
 apiVersion: v2
 name: sigscale-ocs
-version: 1.0.5
+version: 1.0.6
 description: "SigScale OCS (Online Charging System)"
 type: application
 keywords:
@@ -17,4 +17,4 @@ maintainers: # (optional)
     email: issues@sigscale.com
     url: https://sigscale.org/contact
 icon: https://sigscale.org/esm-bundled/images/manifest/icon-96x96.png
-appVersion: "3.3.16-4"
+appVersion: "3.3.16-13"
