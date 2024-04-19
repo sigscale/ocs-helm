@@ -1,5 +1,3 @@
-## SigScale OCS REST Service
-##
 kind: Service
 apiVersion: v1
 metadata:
@@ -13,5 +11,8 @@ spec:
   ports:
   - protocol: TCP
     appProtocol: http
+    {{- if .Values.restService.clusterIP }}
+    clusterIP: {{ .Values.restService.clusterIP }}
+    {{- end }}
     port: {{ .Values.restService.port }}
     targetPort: rest

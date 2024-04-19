@@ -1,5 +1,4 @@
-## SigScale OCS DIAMETER Accounting Service
-##
+{{- if .Values.diameterAcctService.create -}}
 kind: Service
 apiVersion: v1
 metadata:
@@ -13,5 +12,9 @@ spec:
   ports:
   - protocol: {{ .Values.diameterAcctService.protocol }}
     appProtocol: diameter
+    {{- if .Values.diameterAcctService.clusterIP }}
+    clusterIP: {{ .Values.diameterAcctService.clusterIP }}
+    {{- end }}
     port: {{ .Values.diameterAcctService.port }}
     targetPort: diameter-acct
+{{- end }}

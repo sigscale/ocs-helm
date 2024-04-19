@@ -1,5 +1,4 @@
-## SigScale OCS RADIUS Accounting Service
-##
+{{- if .Values.diameterAcctService.create -}}
 kind: Service
 apiVersion: v1
 metadata:
@@ -13,5 +12,9 @@ spec:
   ports:
   - protocol: UDP
     appProtocol: radius-acct
+    {{- if .Values.radiusAcctService.clusterIP }}
+    clusterIP: {{ .Values.radiusAcctService.clusterIP }}
+    {{- end }}
     port:  {{ .Values.radiusAcctService.port }}
     targetPort: radius-acct
+{{- end }}

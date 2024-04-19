@@ -72,7 +72,7 @@ spec:
           protocol: TCP
           containerPort: 54861
         resources:
-          {{- toYaml .Values.resources | nindent 12 }}
+          {{- toYaml .Values.podResources | nindent 12 }}
         volumeMounts:
         - name: ocs-data
           mountPath: /home/otp/db
@@ -148,7 +148,7 @@ spec:
           periodSeconds: 10
           failureThreshold: 6
         resources:
-          {{- toYaml .Values.resources | nindent 12 }}
+          {{- toYaml .Values.podResources | nindent 12 }}
       {{- if .Values.ocsConfig.create }}
       volumes:
       - name: ocs-config
@@ -177,11 +177,17 @@ spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
-          storage: {{ .Values.dataStorage }}
+          storage: {{ .Values.dataVolume.size }}
+      {{- with .Values.dataVolume.class }}
+      storageClassName: {{ .Values.dataVolume.class }}
+      {{- end }}
   - metadata:
       name: ocs-log
     spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
-          storage: {{ .Values.logsStorage }}
+          storage: {{ .Values.dataVolume.size }}
+      {{- with .Values.dataVolume.class }}
+      storageClassName: {{ .Values.dataVolume.class }}
+      {{- end }}

@@ -1,0 +1,466 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "Values",
+	"type": "object",
+	"properties": {
+		"image": {
+			"description": "Container image",
+			"type": "object",
+			"properties": {
+				"repo": {
+					"description": "Repository URL",
+					"type": "string",
+					"format": "uri",
+					"default": "sigscale/ocs"
+				},
+				"tag": {
+					"description": "Image manifest identifier",
+					"type": "string",
+					"pattern": "^([0-9][A-Z][a-z]._-)*$",
+					"default": ""
+				},
+				"pullPolicy": {
+					"description": "When to pull (download) the image",
+					"type": "string",
+					"enum": [
+						"IfNotPresent",
+						"Always",
+						"Never"
+					],
+					"default": "IfNotPresent"
+				}
+			}
+		},
+		"imagePullSecrets": {
+			"description": "Image pull credentials when repository is private.",
+			"type": "array",
+			"default": []
+		},
+		"replicaCount": {
+			"description": "Desired number of Pods in the StatefulSet",
+			"type": "integer",
+			"minimum": 1,
+			"default": 1
+		},
+		"nameOverride": {
+			"description": "Override the application name",
+			"type": "string",
+			"default": ""
+		},
+		"fullnameOverride": {
+			"description": "Override the fully qualified application name",
+			"type": "string",
+			"default": ""
+		},
+		"serviceAccount": {
+			"description": "",
+			"type": "object",
+			"properties": {
+				"create": {
+					"description": "If service account will be provided",
+					"type": "boolean",
+					"default": true
+				},
+				"name": {
+					"description": "Provides the name of a service account",
+					"type": "string",
+					"default": ""
+				},
+				"automount": {
+					"description": "If API credentials should be automatically mounted",
+					"type": "boolean",
+					"default": true
+				},
+				"annotations": {
+					"description": "Metadata for the service account",
+					"type": "object",
+					"default": {}
+				}
+			}
+		},
+		"podLabels": {
+			"description": "Identifying metadata for the Pods",
+			"type": "object",
+			"default": {}
+		},
+		"podAnnotations": {
+			"description": "Non-identifying metadata for the Pods",
+			"type": "object",
+			"default": {}
+		},
+		"restService": {
+			"description": "REST API service",
+			"type": "object",
+			"properties": {
+				"type": {
+					"description": "Service type used to expose an external IP address.",
+					"type": "string",
+					"enum": [
+						"ClusterIP",
+						"NodePort",
+						"LoadBalancer",
+						"ExternalName"
+					],
+					"default": "LoadBalancer"
+				},
+				"clusterIP": {
+					"description": "IP address of the service.",
+					"type": "string",
+					"default": ""
+				},
+				"port": {
+					"description": "IP port address of the service.",
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 65535,
+					"default": 80
+				}
+			},
+			"required": [
+				"type",
+				"port"
+			]
+		},
+		"diameterAcctService": {
+			"description": "DIAMETER accounting credit control service",
+			"type": "object",
+			"properties": {
+				"create": {
+					"description": "If service will be started",
+					"type": "boolean",
+					"default": false
+				},
+				"type": {
+					"description": "Service type used to expose an external IP address.",
+					"type": "string",
+					"enum": [
+						"ClusterIP",
+						"NodePort",
+						"LoadBalancer",
+						"ExternalName"
+					],
+					"default": "ClusterIP"
+				},
+				"protocol": {
+					"description": "Transport protocol used.",
+					"type": "string",
+					"enum": [
+						"TCP",
+						"SCTP"
+					],
+					"default": "TCP"
+				},
+				"clusterIP": {
+					"description": "IP address of the service.",
+					"type": "string",
+					"default": ""
+				},
+				"port": {
+					"description": "IP port address of the service.",
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 65535,
+					"default": 3868
+				}
+			},
+			"required": [
+				"create",
+				"type",
+				"port"
+			]
+		},
+		"diameterAuthService": {
+			"description": "DIAMETER authentication service",
+			"type": "object",
+			"properties": {
+				"create": {
+					"description": "If service will be started",
+					"type": "boolean",
+					"default": false
+				},
+				"type": {
+					"description": "Service type used to expose an external IP address.",
+					"type": "string",
+					"enum": [
+						"ClusterIP",
+						"NodePort",
+						"LoadBalancer",
+						"ExternalName"
+					],
+					"default": "ClusterIP"
+				},
+				"protocol": {
+					"description": "Transport protocol used.",
+					"type": "string",
+					"enum": [
+						"TCP",
+						"SCTP"
+					],
+					"default": "TCP"
+				},
+				"clusterIP": {
+					"description": "IP address of the service.",
+					"type": "string",
+					"default": ""
+				},
+				"port": {
+					"description": "IP port address of the service.",
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 65535,
+					"default": 3869
+				}
+			},
+			"required": [
+				"create",
+				"type",
+				"port"
+			]
+		},
+		"radiusAuthService": {
+			"description": "RADIUS authentication service",
+			"type": "object",
+			"properties": {
+				"create": {
+					"description": "If service will be started",
+					"type": "boolean",
+					"default": false
+				},
+				"type": {
+					"description": "Service type used to expose an external IP address.",
+					"type": "string",
+					"enum": [
+						"ClusterIP",
+						"NodePort",
+						"LoadBalancer",
+						"ExternalName"
+					],
+					"default": "ClusterIP"
+				},
+				"clusterIP": {
+					"description": "IP address of the service.",
+					"type": "string",
+					"default": ""
+				},
+				"port": {
+					"description": "IP port address of the service.",
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 65535,
+					"default": 1812
+				}
+			},
+			"required": [
+				"create",
+				"type",
+				"port"
+			]
+		},
+		"radiusAcctService": {
+			"description": "RADIUS accounting service",
+			"type": "object",
+			"properties": {
+				"create": {
+					"description": "If service will be started",
+					"type": "boolean",
+					"default": false
+				},
+				"type": {
+					"description": "Service type used to expose an external IP address.",
+					"type": "string",
+					"enum": [
+						"ClusterIP",
+						"NodePort",
+						"LoadBalancer",
+						"ExternalName"
+					],
+					"default": "ClusterIP"
+				},
+				"clusterIP": {
+					"description": "IP address of the service.",
+					"type": "string",
+					"default": ""
+				},
+				"port": {
+					"description": "IP port address of the service.",
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 65535,
+					"default": 1813
+				}
+			},
+			"required": [
+				"create",
+				"type",
+				"port"
+			]
+		},
+		"snmpService": {
+			"description": "SNMP monitoring service",
+			"type": "object",
+			"properties": {
+				"create": {
+					"description": "If service will be started",
+					"type": "boolean",
+					"default": false
+				},
+				"type": {
+					"description": "Service type used to expose an external IP address.",
+					"type": "string",
+					"enum": [
+						"ClusterIP",
+						"NodePort",
+						"LoadBalancer",
+						"ExternalName"
+					],
+					"default": "ClusterIP"
+				},
+				"clusterIP": {
+					"description": "IP address of the service.",
+					"type": "string",
+					"default": ""
+				},
+				"port": {
+					"description": "IP port address of the service.",
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 65535,
+					"default": 4161
+				}
+			},
+			"required": [
+				"create",
+				"type",
+				"port"
+			]
+		},
+		"podResources": {
+			"description": "Specify resource limits and requests.",
+			"type": "object",
+			"default": {}
+		},
+		"autoscaling": {
+			"description": "Horizontal Pod autoscaling.",
+			"type": "object",
+			"properties": {
+				"enabled": {
+					"description": "If autoscaling will be enabled",
+					"type": "boolean",
+					"default": false
+				},
+				"minReplicas": {
+					"description": "Minimum number of Pods",
+					"type": "integer",
+					"minimum": 1,
+					"maximum": 65535,
+					"default": 1
+				},
+				"maxReplicas": {
+					"description": "Maximum number of Pods",
+					"type": "integer",
+					"minimum": 1,
+					"maximum": 65535,
+					"default": 10
+				},
+				"targetCPUUtilizationPercentage": {
+					"description": "Target average % utilization of the pods.",
+					"type": "integer",
+					"minimum": 1,
+					"maximum": 100,
+					"default": 80
+				}
+			},
+			"required": [
+				"enabled",
+				"minReplicas",
+				"maxReplicas"
+			]
+		},
+		"nodeSelector": {
+			"description": "Constrain Pods to nodes with labels.",
+			"type": "object",
+			"default": {}
+		},
+		"affinity": {
+			"description": "Prefer nodes to run Pods with affinity rules.",
+			"type": "object",
+			"default": {}
+		},
+		"toleration": {
+			"description": "Allow nodes to run Pods with toleration rules.",
+			"type": "object",
+			"default": {}
+		},
+		"dataVolume": {
+			"description": "Persistent volume claim for stable data storage.",
+			"type": "object",
+			"properties": {
+				"capacity": {
+					"description": "Requested storage capacity size.",
+					"type": "string",
+					"default": "10Gi"
+				},
+				"class": {
+					"description": "Requested storage class.",
+					"type": "string"
+				}
+			},
+			"required": [
+				"size"
+			]
+		},
+		"logsVolume": {
+			"description": "Persistent volume claim for stable logs storage.",
+			"type": "object",
+			"properties": {
+				"capacity": {
+					"description": "Requested storage capacity size.",
+					"type": "string",
+					"default": "10Gi"
+				},
+				"class": {
+					"description": "Requested storage class.",
+					"type": "string"
+				}
+			},
+			"required": [
+				"size"
+			]
+		},
+		"erlangArgs": {
+			"description": "Extra arguments to use in starting the Erlang runtime.",
+			"type": "string",
+			"default": ""
+		},
+		"ocsConfig": {
+			"description": "Local overrides for Erlang application environment variables.",
+			"type": "object",
+			"properties": {
+				"create": {
+					"description": "If local overrides are required (ConfigMap created).",
+					"type": "boolean",
+					"default": false
+				},
+				"sysConfig": {
+					"description": "Contents of an Erlang configuration file.",
+					"type": "string",
+					"default": "[]."
+				}
+			},
+			"required": [
+				"create",
+				"sysConfig"
+			]
+		}
+	},
+	"required": [
+		"replicaCount",
+		"restService",
+		"podResources",
+		"autoscaling",
+		"dataVolume",
+		"logsVolume",
+		"erlangArgs",
+		"ocsConfig"
+	]
+}

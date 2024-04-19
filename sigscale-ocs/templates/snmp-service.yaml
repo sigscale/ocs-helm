@@ -1,5 +1,4 @@
-## SigScale OCS SNMP Service
-##
+{{- if .Values.snmpService.create -}}
 kind: Service
 apiVersion: v1
 metadata:
@@ -13,5 +12,9 @@ spec:
   ports:
   - protocol: UDP
     appProtocol: snmp
+    {{- if .Values.snmpService.clusterIP }}
+    clusterIP: {{ .Values.snmpService.clusterIP }}
+    {{- end }}
     port: {{ .Values.snmpService.port }}
     targetPort: snmp
+{{- end }}

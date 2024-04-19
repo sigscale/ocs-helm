@@ -17,25 +17,36 @@ podAnnotations: {}
 podLabels: {}
 restService:
   type: LoadBalancer
+  clusterIP: ""
   port: 80
 diameterAcctService:
+  create: true
   type: ClusterIP
   protocol: TCP
+  clusterIP: ""
   port: 3868
 diameterAuthService:
+  create: true
   type: ClusterIP
   protocol: TCP
+  clusterIP: ""
   port: 3869
 radiusAcctService:
+  create: true
   type: ClusterIP
+  clusterIP: ""
   port: 1813
 radiusAuthService:
+  create: true
   type: ClusterIP
+  clusterIP: ""
   port: 1812
 snmpService:
+  create: true
   type: ClusterIP
+  clusterIP: ""
   port: 4161
-resources: {}
+podResources: {}
 autoscaling:
   enabled: false
   minReplicas: 1
@@ -44,8 +55,12 @@ autoscaling:
 nodeSelector: {}
 tolerations: []
 affinity: {}
-dataStorage: 10Gi
-logsStorage: 10Gi
+dataVolume:
+  size: 10Gi
+  class: ""
+logsVolume:
+  size: 10Gi
+  class: ""
 erlangArgs: ""
 ocsConfig:
   create: false

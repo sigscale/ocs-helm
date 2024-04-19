@@ -1,5 +1,4 @@
-## SigScale OCS DIAMETER Authentication Service
-##
+{{- if .Values.diameterAuthService.create -}}
 kind: Service
 apiVersion: v1
 metadata:
@@ -13,5 +12,9 @@ spec:
   ports:
   - protocol: {{ .Values.diameterAuthService.protocol }}
     appProtocol: diameter
+    {{- if .Values.diameterAuthService.clusterIP }}
+    clusterIP: {{ .Values.diameterAuthService.clusterIP }}
+    {{- end }}
     port: {{ .Values.diameterAuthService.port }}
     targetPort: diameter-auth
+{{- end }}

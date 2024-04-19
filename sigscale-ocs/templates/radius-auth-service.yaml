@@ -1,5 +1,4 @@
-## SigScale OCS RADIUS Authorization Service
-##
+{{- if .Values.diameterAcctService.create -}}
 kind: Service
 apiVersion: v1
 metadata:
@@ -13,5 +12,9 @@ spec:
   ports:
   - protocol: UDP
     appProtocol: radius
+    {{- if .Values.radiusAuthService.clusterIP }}
+    clusterIP: {{ .Values.radiusAuthService.clusterIP }}
+    {{- end }}
     port:  {{ .Values.radiusAuthService.port }}
     targetPort: radius-auth
+{{- end }}
