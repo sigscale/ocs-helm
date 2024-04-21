@@ -24,7 +24,7 @@ annotations:
     - kind: added
       description: Signed chart package
   artifacthub.io/images: |
-    - name: ocs
+    - name: sigscale-ocs
       image: sigscale-ocs:3.3.16-13
       platforms:
         - linux/amd64
