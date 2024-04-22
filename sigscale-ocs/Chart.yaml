@@ -1,6 +1,6 @@
 apiVersion: v2
 name: sigscale-ocs
-version: 1.1.1
+version: 1.1.2
 description: "SigScale OCS (Online Charging System)"
 type: application
 keywords:
@@ -21,11 +21,13 @@ appVersion: "3.3.16-13"
 annotations:
   artifacthub.io/category: networking
   artifacthub.io/changes: |
+    - kind: fixed
+      description: image annotation
     - kind: added
       description: Signed chart package
   artifacthub.io/images: |
-    - name: sigscale-ocs
-      image: sigscale-ocs:3.3.16-13
+    - name: ocs
+      image: sigscale/ocs:3.3.16-13
       platforms:
         - linux/amd64
   artifacthub.io/license: Apache-2.0
