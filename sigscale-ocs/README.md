@@ -49,6 +49,16 @@ the TM Forum Open APIs are supported including: Product Catalog,
 Product Inventory, Prepay Balance, Service Inventory, Resource
 Inventory and Usage Management.
 
+### Nrf
+The 3GPP Re interface (OCF/CHF -> RF) is implemented with the
+[_Nrf_Rating_](https://app.swaggerhub.com/apis/SigScale/nrf-rating/1.0.0)
+service, a SigScale port from 3GPP TS 32.296 using the SBI drafting
+guidelines of 3GPP TS 29.501 and aligned with 3GPP TS 32.291
+_Nchf_ConvergedChargingService_. Consumers on the _Nrf_ interface
+include SigScale CHF. Remote _Rating Functions_ (RF) produce _Nrf_
+to support distributed rating and charging in either a _Class A_
+or _Class B_ mode.
+
 ### DIAMETER
 SigScale OCS supports the DIAMETER applications for the 3GPP
 interfaces of an OCS (Ro/Gy/Wo) (3GPP 32.299), PCRF (Gx),
