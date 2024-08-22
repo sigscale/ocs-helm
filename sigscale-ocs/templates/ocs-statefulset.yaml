@@ -34,7 +34,7 @@ spec:
       terminationGracePeriodSeconds: 30
       initContainers:
       - name: ocs-init
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
         - name: ERLARGS
@@ -83,7 +83,7 @@ spec:
         {{- end }}
       containers:
       - name: ocs
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
         - name: ERLARGS
