@@ -24,6 +24,8 @@ annotations:
   artifacthub.io/category: networking
   artifacthub.io/changes: |
     - kind: fixed
+      description: mount log before initialization
+    - kind: fixed
       description: typo in log mount path
   artifacthub.io/images: |
     - name: ocs
