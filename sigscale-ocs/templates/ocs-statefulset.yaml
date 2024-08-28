@@ -76,6 +76,8 @@ spec:
         volumeMounts:
         - name: ocs-data
           mountPath: /home/otp/db
+        - name: ocs-log
+          mountPath: /home/otp/log
         {{- if .Values.ocsConfig.create }}
         - name: ocs-config
           mountPath: /home/otp/config
