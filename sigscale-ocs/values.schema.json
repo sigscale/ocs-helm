@@ -17,7 +17,7 @@
 					"description": "Image manifest identifier",
 					"type": "string",
 					"pattern": "^[0-9]{1,3}(\\.[0-9]{1,3}){1,2}$|^latest$",
-					"default": ""
+					"default": "latest"
 				},
 				"pullPolicy": {
 					"description": "When to pull (download) the image",
