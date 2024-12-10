@@ -24,7 +24,7 @@ annotations:
   artifacthub.io/category: networking
   artifacthub.io/changes: |
     - kind: added
-      description: configurable pagination server timeout (default: 1m)
+      description: "configurable pagination server timeout (default: 1m)"
     - kind: added
       description: more rfc9457 problem details reports in rest apis
   artifacthub.io/images: |
