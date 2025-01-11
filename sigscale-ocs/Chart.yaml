@@ -1,6 +1,6 @@
 apiVersion: v2
 name: sigscale-ocs
-version: 1.1.13
+version: 1.1.14
 description: "SigScale OCS (Online Charging System)"
 type: application
 keywords:
@@ -19,17 +19,17 @@ maintainers: # (optional)
     email: issues@sigscale.com
     url: https://sigscale.org/contact
 icon: https://sigscale.org/esm-bundled/images/manifest/icon-96x96.png
-appVersion: "3.4.24-1"
+appVersion: "3.4.28-1"
 annotations:
   artifacthub.io/category: networking
   artifacthub.io/changes: |
-    - kind: fixed
-      description: pagination server read ahead
-    - kind: added
-      description: foot with item total in all grid views
+    - kind: changed
+      description: pagination server responsiveness
+    - kind: changed
+      description: rate table pwa improvements
   artifacthub.io/images: |
     - name: ocs
-      image: sigscale/ocs:3.4.24-1
+      image: sigscale/ocs:3.4.28-1
       platforms:
         - linux/amd64
   artifacthub.io/license: Apache-2.0
